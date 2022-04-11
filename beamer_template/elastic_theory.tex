@@ -1,0 +1,2360 @@
+%\listfiles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   A Beamer presentation by Rodrigo Platte, Arizona State University, May 18 2007.
+%   Feel free to modify this file to generate your own presentation.
+%
+%   This Latex file should be compiled with pdflatex, for this reason, it is recommended 
+% that you convert the figures in your presentation to pdf. Postscript files (.ps and .eps) 
+% will not compile properly when pdflatex is used. You may use commands like "convert"
+% or "eps2pdf" (in linux) to convert your figures. 
+%
+%   The final output is a PDF file that is best visualized with Adobe Reader.
+%
+%   More information can be found in beameruserguide.pdf
+%
+%   This presentation requires the following files:
+%   BEAMERoptions.tex, ASUlogo.pdf,  asu.pdf, beamerouterthememathASUlogo.sty
+%  intro1.pdf, intro2.pdf, intro3.pdf, intro4.pdf, analytic.pdf
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\documentclass[compress,xcolor=pst,english,10pt]{beamer}
+% Use this instead for printing and distributing your slides (suppresses overlays)
+\documentclass[english,10pt]{beamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit the file BEAMERoptions.tex to change theme, color, fonts, logo, etc.%
+\input{BEAMERoptions.tex}					                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%----------  Look minimalista ideal para imprimir
+%\input{printout.tex}
+
+
+% Load packages
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+
+\usepackage{graphics}
+%\usepackage{multimedia} % for movies and sound
+%\usepackage{times}
+\usepackage{pst-node}
+%\usepackage{longtable}
+%\usepackage{pst-plot}
+%\usepackage{pst-all}
+\usepackage{pstricks}
+\usepackage{pdftricks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{fancybox}
+\usepackage{mathrsfs,pifont}
+\usepackage{txfonts} 
+\usepackage{comment}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+
+% Define new colors
+
+\newrgbcolor{LightBlue}{0.68 0.85 0.9}
+
+\definecolor{verde}{rgb}{0.0,0.5,0.0}
+\definecolor{brick}{rgb}{0.5,0.0,0.0}
+\definecolor{grish}{rgb}{0.9,0.9,0.9}
+\definecolor{grisi}{rgb}{0.9,0.9,0.9}
+\definecolor{caribbeangreen}{rgb}{0.0, 0.8, 0.6}
+\definecolor{carnelian}{rgb}{0.7, 0.11, 0.11}
+\definecolor{ceruleanblue}{rgb}{0.16, 0.32, 0.75}
+\definecolor{cinnamon}{rgb}{0.82, 0.41, 0.12}
+\definecolor{cobalt}{rgb}{0.0, 0.28, 0.67}
+\definecolor{cornellred}{rgb}{0.7, 0.11, 0.11}
+\definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
+\definecolor{darkcerulean}{rgb}{0.03, 0.27, 0.49}
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{darkolivegreen}{rgb}{0.33, 0.42, 0.18}
+\definecolor{darkslategray}{rgb}{0.18, 0.31, 0.31}
+\definecolor{deepcarmine}{rgb}{0.66, 0.13, 0.24}
+\definecolor{deeplilac}{rgb}{0.6, 0.33, 0.73}
+\definecolor{deepfuchsia}{rgb}{0.76, 0.33, 0.76}
+\definecolor{darkviolet}{rgb}{0.58, 0.0, 0.83}
+\definecolor{deepcarmine}{rgb}{0.66, 0.13, 0.24}
+
+
+
+
+\newrgbcolor{verde}{0 .5 0} 
+\newrgbcolor{brick}{0.5 0 0} 
+\newrgbcolor{darkgreen}{0.3 0.6 0}
+\newrgbcolor{lightgreen}{139 255 182} 
+\newrgbcolor{olive}{0.5 0.7 0}
+\newrgbcolor{mellow}{.847 .72 .525}
+
+% Some useful commands
+\newcommand{\declarecommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
+%\newcommand{\cita}[1]{{\verde \small #1}}
+\newcommand{\scita}[1]{{\verde  \scriptsize #1}}
+\newcommand{\cita}[1]{{\verde \em \small #1}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\bc}{\begin{columns}}
+\newcommand{\ec}{\end{columns}}
+
+\newcommand{\shalfzero}{^{10}{\rm Be(0}^+{\rm )}\otimes \nu 2s_{1/2}}
+\newcommand{\shalftwo}{^{10}{\rm Be(2}^+{\rm )}\otimes \nu 2s_{1/2}}
+\newcommand{\dhalfzero}{^{10}{\rm Be(0}^+{\rm )}\otimes \nu 1d_{5/2}}
+\newcommand{\dhalftwo}{^{10}{\rm Be(2}^+{\rm )}\otimes \nu 1d_{5/2}}
+\newcommand{\be}{$^{11}{\rm Be}$}
+
+\newcommand{\gitem}[1]{\item {\textcolor{deepcarmine}{  #1}}}
+\newcommand{\ritem}[1]{\item {\textcolor{brick}{  #1}}}
+\newcommand{\bitem}[1]{\item {\textcolor{blue}{  #1}}}
+\newcommand{\slide}[1]{\begin{frame} \frametitle{ #1}}
+\newcommand{\finslide}{{\end{frame}}}
+\newcommand{\sch}{Schr\"odinger}
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\vecs}{{\bf s}}
+\newcommand{\vecR}{{\bf R}}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\Vcoup}{V_\mathrm{coup}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\threej}[6]{\begin{pmatrix}#1&#2&#3\\#4&#5&#6\end{pmatrix}}
+\newcommand{\sixj}[6]{\begin{Bmatrix}#1&#2&#3\\#4&#5&#6\end{Bmatrix}}
+%\newcommand{\var}[1]{\texttt\textcolor{brick}{ #1}}
+\newcommand{\varblue}[1]{\texttt{\blue  #1}}
+\newcommand{\var}[1]{\texttt{\blue  #1}}
+\newcommand{\pih}{{\pi \over 2}}
+
+\newcommand{\images}{images}
+
+\newcommand{\boxedeqn}[1]{%
+  \[\fbox{%
+      \addtolength{\linewidth}{-2\fboxsep}%
+      \addtolength{\linewidth}{-2\fboxrule}%
+      \begin{minipage}{\linewidth}%
+      \begin{equation}\nonumber#1\end{equation}%
+      \end{minipage}%
+    }\]%
+}
+
+\newcommand{\miframebox}[1]{\psshadowbox[fillcolor=lightgreen,fillstyle=solid,linecolor=red,framearc=0.25]{\textcolor{brick}{  #1 }}}
+\newcommand{\mibox}[2]{%
+\begin{columns}
+\column{#1}
+\begin{block}{}
+\begin{center}
+#2
+\end{center}
+\end{block}
+\end{columns}
+}
+
+\lstnewenvironment{miexample}[1][]{%
+  \lstset{basicstyle=\footnotesize\ttfamily,columns=flexible,%
+    frame=single,backgroundcolor=\color{yellow!20},%
+    xleftmargin=\fboxsep,xrightmargin=\fboxsep,gobble=1%
+    }\lstset{#1}}{}
+\lstnewenvironment{examplesmall}[1][]{%
+  \lstset{basicstyle=\tiny\ttfamily,columns=flexible,%
+    frame=single,backgroundcolor=\color{yellow!20},%
+    xleftmargin=\fboxsep,xrightmargin=\fboxsep,gobble=2%
+    }\lstset{#1}}{}
+
+
+\newcommand{\mishadowbox}[1]{\psshadowbox[fillcolor=lightgreen]{\textcolor{brick}{  #1 }}}
+\def\nuc#1#2{\relax\ifmmode{}^{#1}{\protect\text{#2}}\else${}^{#1}$#2\fi}
+
+\newcommand{\Mibox}[2]{%
+\begin{minipage}{#1}
+\begin{block}{}
+#2
+\end{block}
+\end{minipage}
+}
+
+
+
+%% ---------------------------  The title and name ----------------------------- 
+%% Note: [short title]{long title}, [short author(s) name]{long author(s) name}
+%\title[Master Erasmus Mundus in Nuclear Physics]%
+%  {Introduction to Nuclear Reactions}
+%\title[Master Interuniversitario en Física Nuclear]%
+%  {Introducción a las Reacciones Nucleares}
+%\author[A.M.M.,J.G.C.]{\emph{Antonio M. Moro, Joaquín Gómez Camacho} }
+%\date{\today}{}
+
+\title[Elastic scattering]{Elastic scattering}
+\author[A.M.Moro]{A.M.Moro}
+\date{\today}{}
+
+
+\title[Elastic scattering: the optical model]%
+  {Applications of nuclear reactions calculations: \\
+   Elastic scattering: the optical model}
+\author[A. M. Moro]{\emph{Antonio M. Moro} }
+\date{}{}
+
+%\vspace{1cm}
+%Material available at: \url{https://github.com/ammoro/RAON}
+
+
+
+%--------------------------------------------------
+
+
+\declarecommand{\images}{images}
+
+%%--- Show  logo in title page ---------------
+\institute[Universidad de Sevilla, Spain]{
+\includegraphics[height=1.20cm]{images/logous.eps} \\
+{\color{ASUred} Universidad de Sevilla, Spain}
+
+%\vspace{1cm}
+%Material available at: \url{https://github.com/ammoro/RAON}
+}
+
+
+%%---------------------------------------------
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Presentation Starts Here %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\PassOptionsToPackage{prologue}{xcolor}
+
+\setbeamerfont{frametitle}{size=\normalsize}
+
+
+
+\begin{document}
+
+%% ----------------------  Title frame ---------------------------- %%
+\begin{frame}[plain]
+	\titlepage
+	\transboxout
+		\centering
+	 {\footnotesize Material available at: \url{https://github.com/ammoro/padova}}
+\end{frame}
+%% -----------------------------------------------------------------%%
+
+
+\section{Introduction}
+
+
+
+%--------------------------------------------------
+\slide{Recommended bibliography} 
+
+\begin{itemize}
+\item G.R.~Satchler, {\it Introduction to nuclear reactions}, Macmillan (1990)
+
+\item G.R.~Satchler, {\it Direct Nuclear Reactions}, Oxford University Press (1983)
+
+\item N.~Glendenning,  {\it Direct Nuclear Reactions}, World Scientific (2004)
+
+\item I.J.~Thompson and F.M.~Nunes, {\it Nuclear Reactions for Astrophysics}, Cambridge University Press (2009)
+
+\item A.M.M., {\it Models for nuclear reactions with weakly bound systems}, Proceedings of the International School of Physics Enrico Fermi
+Course 201 ``Nuclear Physics with Stable and Radioactive Ion Beams'' (https://arxiv.org/abs/1807.04349).
+
+%\item FRESCO website: www.fresco.org.uk
+
+\end{itemize}
+
+\end{frame}
+
+
+%--------------------------------------
+\section{Modelling reactions}
+%--------------------------------------
+
+%----------------------------------
+%\subsection{Some scattering theory}
+
+\slide{}
+\begin{center}
+\psframebox[fillcolor=green!10,linecolor=blue,framearc=0.1,fillstyle=solid,framesep=5pt]{
+Modelling nuclear reactions
+}%psframe
+\end{center} 
+\end{frame}
+
+
+%-----------------------------------------------------------------------------------------
+\slide{Why reaction theory is important?}
+
+\begin{itemize}
+\setlength{\itemsep}{14pt}
+
+\item Many physical processes occurring spontaneously in nature (e.g.~stars) or artificially (e.g.~nuclear reactor) involve nuclear reactions. We need theoretical tools to evaluate their rates and cross sections. 
+
+\item Reaction theory provides the necessary framework to extract meaningful {\blue structure} information from measured {\blue cross sections} and also permits the understanding of the {\blue dynamics} of nuclear collisions.
+
+
+\item The many-body scattering problem is not solvable in general,  so specific models tailored to specific types of reactions are used ({\blue elastic}, {\blue breakup}, {\blue transfer}, {\blue knockout}...)
+each of them emphasizing some particular degrees of freedom. 
+
+\item In particular,  exotic nuclei close to driplines are usually weakly-bound and {\blue breakup}  (coupling to the continuum) is  important and must be  taken into account in the reaction model. 
+
+%\item {\blue Few-body} models provide an appealing simplification of this complicated problem. 
+
+
+%\item Even after this simplification, the scattering problem is not solvable in general,
+
+\end{itemize}
+
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Spatial and time scales}
+
+\begin{itemize}
+%Reminder of physical constants: $\hbar c = 197.33$ MeV fm. ${e^2 \over 4 \pi \epsilon_0} = 1.4400$ MeV fm.
+\item Typical \textcolor{blue}{size} of a nucleus: $R \simeq 1.20 \times A^{1/3}$~fm$ \sim 5$~fm 
+%\item Typical {\magenta range} of the nuclear force between two nuclei  $R \simeq 1.45 (A_1^{1/3}+A_2^{1/3})$~fm
+\item Typical \textcolor{blue}{length scale} of the nuclear force between two nuclei:  $a \sim 1$~fm
+\item Typical \textcolor{blue}{length scale} of the Coulomb force between two nuclei:  $a_0 = {Z_1 Z_2 e^2 \over 8 \pi \epsilon_o E_{CM}}\sim 10$~fm
+%\item Angular momentum: $L \sim 5\hbar$ 
+\item Reduced de Broglie wavelength associated to the motion of a particle: $\lambdabar = 1/k = {\hbar}/{p}$ \\ 
+{\footnotesize (for a massive particle$\lambdabar ={\hbar}/{\sqrt{2 m E}}$)} 	
+\item To ``observe'' an object of size $R$, we need to use radiation with $\lambda \sim R$) .
+\end{itemize}
+
+\begin{figure}{\par \resizebox*{0.8\textwidth}{!}
+{\includegraphics{\images/reduced-debroglie-lambas.eps}} \par}
+\end{figure}
+
+
+%\begin{itemize}
+\footnotesize
+%\item[\ding{43}] 
+\ding{43}{\em \verde A classical description of the scattering based on trajectories is valid when the wavelength associated to the motion is  short compared to the length scale of the interaction (no significant diffraction effects). Otherwise a quantum-mechanical description is needed.}
+%\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+
+\subsection{Types of reactions}
+
+%----------------------------------------
+\slide{Direct versus compound reactions}
+
+{\sc \brick Direct:} elastic, inelastic, transfer,\ldots
+\begin{itemize}
+\setlength{\itemsep}{10pt}
+\item ``fast'' collisions (10$^{-21}$~s).
+\item only a few modes (degrees of freedom) involved
+\item  small momentum transfer
+\item angular distribution asymmetric about $\pi/2$ (forward peaked)
+\end{itemize}
+
+\vspace{0.5cm}
+
+{\sc \brick Compound:} complete, incomplete fusion.
+\begin{itemize}
+\setlength{\itemsep}{10pt}
+\item ``slow'' collisions ($10^{-18}-10^{-16}$~s).
+\item many degrees of freedom involved
+\item large amount of momentum transfer
+\item ``loss of memory''  $\Rightarrow$ dominated by statistical decay of  emitted particles;  almost forward/backward symmetric distributions  (in CM)
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------------------
+\begin{frame}{Examples of direct and compound nucleus reactions}
+$$
+\psframebox[linecolor=red,framearc=0.1,framesep=0.1]{
+a + A  \rightarrow  b + B  + Q 
+%E^{i}_\mathrm{cm} + M_a c^2 + M_A c^2=  E^{f}_\mathrm{cm} +  M_b c^2 +M_B c^2 
+}%psframe
+\quad \quad Q= (M_a + M_A - M_b - M_B) c^2 \,\, (\text{energy released})
+%(Q=\sum_i M_i - \sum_f M_f= \text{energy released})
+$$
+
+\begin{itemize}
+\setlength{\itemsep}{10pt}
+    \gitem{Elastic scattering}: $b=a$, $B=A$ \,  ($Q=0$) \\
+    E.g.: $\alpha+ {\rm ^{197}Au} \rightarrow \alpha+ {\rm ^{197}Au} $   
+    
+    \gitem{Inelastic scattering}: $b=a$, $B=A^*$ \,  ($Q<0$)  \\
+    E.g.: $\alpha+ {\rm ^{197}Au} \rightarrow \alpha+ {\rm ^{197}Au^*} $   
+ 
+   \gitem{Rearrangement or transfer}: $b \neq a$, $B \neq A$  \, $Q$ positive or negative \\
+     E.g.: $d+ {\rm ^{208}Pb} \rightarrow p+ {\rm ^{209}Pb} $   
+
+   \gitem{Breakup}: $a=b+x$ $\Rightarrow$  $a + A \rightarrow b + x + A$ \, ($Q<0$) \\
+    E.g.: $d+ {\rm ^{208}Pb} \rightarrow p+ n + {\rm ^{208}Pb} $   
+   
+   \gitem{Fusion}: reaction occurs via the formation of an intermediate compound nucleus: $a+ B \rightarrow C^* \rightarrow b + B$  \\
+   A special case is that of {\verde capture} reactions ($b=\gamma$): \\
+   {\bf E.g.:} $p+ {\rm ^{197}Au} \rightarrow {\rm ^{198}Hg^*}  \rightarrow \gamma + {\rm ^{198}Hg_{g.s.}} $   
+   
+%   \gitem{Capture}: special case of rearrangement with $b=\gamma$ \, ($Q>0$) \\
+%   E.g.: $p+ {\rm ^{197}Au} \rightarrow {\rm ^{198}Hg^*}  \rightarrow \gamma + {\rm ^{198}Hg_{g.s.}} $   
+
+%   \gitem{Reactions with more than two particles in the final state}:
+%   \begin{itemize}
+%       \item {Breakup}: $d+ {\rm ^{208}Pb} \rightarrow p+ n + {\rm ^{208}Pb} $      
+%       $a=b+x$ $\Rightarrow$  $a + A \rightarrow b + x + A$ \, ($Q<0$) \\
+%    E.g.: $d+ {\rm ^{208}Pb} \rightarrow p+ n + {\rm ^{208}Pb} $      
+%   \end{itemize}
+   
+\end{itemize}    
+
+\end{frame}
+
+%----------------------------------------------------------------
+%\subsection{Reaction channels: direct and compound nucleus processes}
+
+\begin{frame}{Example: the d+\nuc{10}{Be} reaction}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/be10d_chans.eps}} \par}
+\end{figure}
+
+\end{frame}
+
+
+%---------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Conservation laws}
+    
+\begin{itemize}
+\setlength{\itemsep}{12pt}
+\gitem{Energy conservation:}
+$$
+\underbrace{T_a+ T_A}_{E^{i}_\mathrm{cm}} + M_a c^2 + M_A c^2=  \underbrace{T_b+ T_B}_{E^{f}_\mathrm{cm}}  +  M_b c^2 +M_B c^2 
+$$
+\gitem{Momentum conservation:}
+$$
+%\boldsymbol{P}(a+A)=
+\boldsymbol{p}_{a}+\boldsymbol{p}_{A}=\boldsymbol{p}_{b}+\boldsymbol{p}_{B}
+%\boldsymbol{P}(b+B)
+$$
+
+\gitem{Total angular momentum conservation:}
+$$
+\boldsymbol{J}=\boldsymbol{J}_{a}+\boldsymbol{J}_{A}=\boldsymbol{J}_{b}+\boldsymbol{J}_{B}
+%=\boldsymbol{J}(b+B)
+$$
+
+\gitem{Other}: charge, parity, etc
+
+
+\end{itemize}
+    
+    
+\end{frame}
+
+
+
+
+\subsection{The concept of cross section}
+
+%---------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Linking theory with experiments: the cross section}
+
+\let\psgrid\relax
+\begin{pspicture}(8,4)
+\psgrid
+\rput(2,3.0){\rnode{F1}{
+\psframebox[fillcolor=red!10,fillstyle=solid,framearc=0.15,linecolor=brick]{
+%\psovalbox*[fillcolor=LightBlue,shadow=true]{
+ \parbox{3.0cm}{
+ \begin{center}
+ EXPERIMENT 
+ \end{center}
+
+\includegraphics[width=0.25\columnwidth]{\images/isolde.eps}
+}%parbox
+}}}
+\rput(10,3.0){\rnode{F2}{
+\psframebox[fillcolor=red!10,fillstyle=solid,framearc=0.15,linecolor=brick]{
+%\psovalbox*[fillcolor=LightBlue,shadow=true]{
+ \parbox{3.0cm}{
+\begin{center} THEORY \\
+ ($H \Psi = E \Psi$) 
+\end{center}
+
+%  $ \psframebox[fillcolor=green!40,framearc=0.2]{
+% H \Psi = E \Psi
+% }%psframe
+% $
+\includegraphics[width=0.22\columnwidth]{\images/computer.eps}
+}%parbox
+}}}
+
+\pause
+
+\rput(5.5,0.0){\rnode{T1}{\psovalbox*[fillcolor=green!40,shadow=true,fillstyle=solid]{ 
+ \parbox{3.0cm}{
+CROSS SECTIONS
+$$
+\frac{d\sigma}{d\Omega}, \frac{d\sigma}{dE}, etc
+$$
+}
+}}}
+\end{pspicture}
+
+
+{\nccurve[linecolor=red,angleA=-90,angleB=180,linewidth=5pt]{->}{F1}{T1}}
+{\nccurve[linecolor=red,angleA=-90,angleB=0,linewidth=5pt]{->}{F2}{T1}}
+%{\nccurve[linecolor=red,angleA=0,angleB=180]{->}{F3}{T1}}
+\end{frame}
+
+
+
+
+%---------------------------------------------------------------------------------------
+\slide{Experimental cross section}
+%\begin{itemize}
+%\item Experimental data consist of cross sections for one or more detected particles
+\begin{columns}
+\column{0.5\textwidth}
+\begin{center}\includegraphics[width=0.8\columnwidth]{\images/scattering1.eps}\end{center}
+\column{0.5\textwidth}
+$$
+%\psframebox[fillcolor=green!40,fillstyle=solid,framearc=0.2]{
+\psframebox[fillcolor=green!15,linecolor=blue,framearc=0.1,fillstyle=solid]{
+\Delta I = I_0 ~ n_t ~ \textcolor{red}{ \frac{d \sigma}{d\Omega} } \Delta \Omega
+}%psframe
+$$
+\end{columns}
+
+\vspace{0.5cm}
+%\item Differential cross section:
+% $$
+% \psframebox[fillcolor=green!15,linecolor=blue,framearc=0.1,fillstyle=solid]{
+% \Delta I = I_0 ~ n_t ~ \textcolor{red}{ \frac{d \sigma}{d\Omega} } \Delta \Omega
+% }%psframe
+% $$
+\begin{itemize}
+\item $\Delta \Omega$: solid angle of detector (=$\Delta A/r^2$)
+\item $\Delta I$: detected particles per unit time in $\Delta \Omega$  ($s^{-1}$)
+\item $I_0$: incident particles per unit time and unit area ($s^{-1} L^{-2}$)
+\item $n_t$: number of target nuclei within the beam % per unit surface  ($L^{-2}$)
+\item $\textcolor{red}{ {d \sigma}/{d\Omega} }$: differential cross section  ($L^2$)
+\end{itemize}
+
+
+$$
+\psframebox[fillcolor=green!15,linecolor=blue,framearc=0.1,fillstyle=solid]{
+\frac{d\sigma}{d\Omega} =  \frac{\textrm{flux of scattered particles through $dA= r^2 d\Omega$} }{ \textrm{incident flux} }
+}%psframe
+$$
+\end{frame}
+
+
+
+
+
+\subsection{Scattering theory}
+
+%----------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Projectile and target internal Hamiltonians}
+\begin{itemize}
+\item Mass partitions: $\alpha$, $\beta$,$\ldots$
+ \item Internal coordinates (d.o.f.): $\{\xi_p\}$, $\{\xi_t\}$ 
+\item Internal Hamiltonians: $H_\alpha(\xi_\alpha) \equiv H_p(\xi_p) + H_t (\xi_t)$
+\item Internal states:
+$
+[H_\alpha (\xi_\alpha) - \varepsilon_\alpha] \Phi_\alpha (\xi_\alpha)=0 \quad \{\varepsilon_\alpha\}=\textrm{excitation energies}
+$
+\item Different mass partitions  have different Hamiltonians: $H_\alpha(\xi_\alpha)$, $H_\beta (\xi_\beta)$, etc
+\end{itemize}
+
+\resizebox*{0.7\textwidth}{!}{\input{images/be10d_chans_H.pstex_t}}
+%\scalebox{.4}{ \input{\images/be10d_chans_H.pstex_t} }
+\end{frame}
+
+
+
+
+%----------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Quantum scattering: model Hamiltonian and model wavefunction}
+
+\begin{block}{Full Hamiltonian}
+$$
+\psframebox[linecolor=red,framearc=0.1,framesep=5pt]{
+H=  \underbrace{H_p(\xi_p) + H_t(\xi_t)}_\text{internal dynamics} + \underbrace{\hat{T}_\bR+ V(\bR,\xi_p,\xi_t)}_\text{relative motion} 
+}%psfr
+$$
+\begin{itemize}
+\item $\hat{T}_\bR $: proj.--target kinetic energy
+\item $H_p(\xi_p)$: projectile internal Hamiltonian 
+\item $H_t(\xi_t)$: target internal Hamiltonian
+\item $V(\bR,\xi_p,\xi_t)$: projectile--target interaction
+\end{itemize}
+\end{block}
+
+%\begin{block}{Scattering wavefunction}
+Time-independent Schr\"odinger equation:
+$$
+\psframebox[linecolor=red,framearc=0.1,framesep=5pt]{
+[H - E ] \Psi(\bR,\xi_p,\xi_t) = 0
+}%psfr
+$$
+%\end{block}
+
+\end{frame}
+
+
+
+
+
+%------------------------------------------------------
+\slide{The scattering wavefunction}
+
+\begin{center}
+%\begin{figure}
+\begin{minipage}{0.62\textwidth}
+\includegraphics[width=0.65\columnwidth]{\images/scattering.eps}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+\includegraphics[width=0.6\columnwidth]{\images/transfer_mom.eps}
+\end{minipage}
+%\caption{\label{fig:scattering} Left: schematic representation of a scattering process. Right: initial, final and transferred momenta.}
+%\end{figure}
+\end{center}
+
+%\includegraphics[width=0.5\columnwidth]{\images/scattering.eps}
+
+
+Among the many mathematical solutions of $ [H - E ] \Psi = 0$ we are interested  in those behaving asymptotically as:
+
+%\parbox{0.9\textwidth}{
+$$
+%\psframebox[fillcolor=magenta!10,linecolor=red,framearc=0.1,fillstyle=solid,framesep=8pt]{
+\psframebox[linecolor=red,fillcolor=orange!10,fillstyle=solid,framearc=0.2,framesep=8pt]{
+\Psi^\mathrm{(+)}_{\bK_\alpha} \rightarrow   \Phi_\alpha(\xi_\alpha) e^{i \bK_\alpha \cdot \bR_\alpha} +
+ \textrm{(outgoing spherical waves in $\alpha$, $\beta$, $\gamma$, $\ldots$)}
+}%psframebox
+$$
+%}%parbox
+%}%psframe
+where 
+\bi
+\item $\alpha$ denotes the incident channel and $\beta$,$\gamma$,\ldots other (non-elastic channels)
+\item $\Phi_\alpha(\xi_\alpha)$ internal state of projectile+target in channel $\alpha$
+\ei
+%\end{itemize}
+
+
+\end{frame}
+
+
+%-----------------------------------------------
+\slide{Scattering amplitude and cross sections}
+
+Asymptotically, when the projectile and target are well far apart,
+%\begin{center}
+%\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=solid,framesep=-8pt]{
+\psframebox[linecolor=red,fillcolor=orange!5,fillstyle=solid,framearc=0.2,framesep=-8pt]{
+\parbox{0.9\textwidth}{
+\begin{align*}
+\Psi^\mathrm{(+)}_{\bK_\alpha}   \xrightarrow{R_\alpha \gg}  & \Phi_\alpha(\xi_\alpha) e^{i \bK_\alpha \cdot \bR_\alpha} +  \Phi_\alpha(\xi_\alpha) \textcolor{red}{f_{\alpha,\alpha}(\theta)} \frac{e^{i K_\alpha R_\alpha}}{R_\alpha}  & \quad \textrm{(elastic)}
+\\
+  & +\sum_{\alpha' \neq \alpha} \Phi_{\alpha'}(\xi_\alpha) \textcolor{red}{f_{\alpha',\alpha}(\theta)} \frac{e^{i K_{\alpha'} R_\alpha}}{R_\alpha} 
+ & \quad \textrm{(inelastic)}
+ \\
+\Psi^\mathrm{(+)}_{\bK_\alpha}   \xrightarrow{R_\beta \gg}  & \sum_{\beta} \Phi_\beta(\xi_\beta) \textcolor{red}{f_{\beta,\alpha}(\theta)} \frac{e^{i K_\beta R_\beta}}{R_\beta} 
+ & \quad \textrm{(transfer)}
+\end{align*}
+}%parbox
+}%psframe
+
+\medskip
+
+where the function  {\red $f_{\beta,\alpha}$ } modulating the outgoing waves is called {\blue scattering amplitude}
+
+
+
+\bigskip
+
+%\begin{block}{Cross sections:}
+{\bf Cross sections:} 
+$$
+%\psframebox[fillcolor=magenta!8,linecolor=red,framearc=0.1,fillstyle=solid,framesep=6pt]{
+\psframebox[linecolor=red,fillcolor=orange!5,fillstyle=solid,framearc=0.2,framesep=6pt]{
+\left ( \frac{d\sigma}{d\Omega} \right)_{\alpha \rightarrow \beta} = \frac{\mu_\alpha}{\mu_\beta} \frac{K_\beta}{K_\alpha} \left| f_{\beta,\alpha}(\theta) \right|^2 
+}%psr
+\quad
+E= \frac{\hbar^2 K^2_\alpha}{2 \mu_\alpha} + \varepsilon_\alpha = \frac{\hbar^2 K^2_\beta}{2 \mu_\beta} + \varepsilon_\beta
+$$ 
+%\end{block}
+
+%
+\end{frame}
+
+%---------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+{\bf Ideally, the strategy would be:}
+\begin{enumerate}
+\item Choose structure model for $H_\alpha(\xi)$
+\item Compute $\Psi^\mathrm{(+)}$ by solving $[H-E]\Psi^{(+)}=0$
+\item Consider the limit $R \gg$ of $\Psi^\mathrm{(+)}$ 
+\item Project it onto the desired final state to extract the scattering amplitude:
+$$
+( \Phi_{\alpha'} | \Psi^\mathrm{(+)} \rangle \equiv \int d \xi_{\alpha} \Phi_{\alpha'}^{*}(\xi_{\alpha})  \Psi^\mathrm{(+)}  = {\red f_{\alpha',\alpha}(\theta)} \frac{e^{i K_{\alpha'} R_\alpha}}{R_\alpha} 
+$$ 
+\end{enumerate}
+
+\pause
+{\bf But...}
+\begin{itemize}
+\item $\Psi$ is a solution of a complicated many-body problem, not solvable in most cases. 
+\item The number of accessible channels and states can be enormous. 
+\end{itemize} 
+
+\vspace{0.5cm}
+
+\ding{233}{\it So, in practice, we will be content with an approximation of {\red $\Psi$} (or ${\red f(\theta)}$) in a restricted modelspace} 
+\end{frame}
+
+%---------------------------------------------------------
+
+
+
+
+
+%\subsection{Defining the modelspace: Feshbach formalism}
+%---------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Defining our model space: Feshbach formalism}
+
+\begin{itemize}
+\item Divide the full space into two groups: \textcolor{red}{P} and {\red Q}
+\begin{itemize}
+\item[\ding{233}] {\red P}: channels of interest
+\item[\ding{233}] {\red Q}: remaining channels 
+ \end{itemize}
+
+\item  Write $\Psi = \Psi_P + \Psi_Q$
+
+\begin{center}
+%\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=solid,framesep=-7pt]{
+\psframebox[linecolor=red,fillcolor=orange!10,fillstyle=solid,framearc=0.2,framesep=-7pt]{
+\parbox{0.4\textwidth}{
+\begin{align*}
+(E-H_{PP}) \Psi_P & = H_{PQ} \Psi_Q  \\
+(E-H_{QQ}) \Psi_Q & = H_{QP} \Psi_P 
+\end{align*}
+}%parbox
+}%psframe
+\quad ( $H_{PP}=P H P $,  $H_{PQ}=P H Q $,  etc )
+\end{center}
+
+\item Eliminate (formally) $\Psi_Q$:
+$$
+%\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=solid,framesep=5pt]{
+\psframebox[linecolor=red,fillcolor=orange!10,fillstyle=solid,framearc=0.2,framesep=5pt]{
+\underbrace{ \left [H_{PP} + H_{PQ} \frac{1}{E- H_{QQ} + i \epsilon} H_{QP}  \right ] }_{H_\mathrm{eff} } \Psi_P = E \Psi_P 
+}%psframe
+$$
+
+\item $H_\mathrm{eff}$ too complicated (complex, energy dependent, non-local) so, in practice, it is usually  replaced by a simpler, effective Hamiltonian: 
+$$
+H_\mathrm{eff} \longrightarrow H_\mathrm{model} \quad \textrm{(complex, energy dependent)}
+$$ 
+
+\end{itemize}
+\end{frame}
+
+
+%-------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Strategy for reaction calculations}
+
+We need to make a choice for:
+\bigskip
+
+\begin{enumerate}
+\setlength{\itemsep}{14pt}
+\item {\brick Modelspace:} what channels are to be included?
+
+\item {\brick Structure model:} for projectile and target
+\item[] (Microscopic, collective, cluster...)
+
+\item {\brick Reaction formalism}
+\item[] (will depend on the process to be studied)
+\end{enumerate}
+
+\end{frame}
+
+
+%---------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Choice of the modelspace: the d+\nuc{10}{Be} example}
+
+\begin{figure}{\par \resizebox*{0.7\textwidth}{!}
+{\includegraphics{\images/be10dp_channels.eps}} \par}
+\end{figure}
+
+\end{frame}
+
+
+
+
+%------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Choice of structure model: from the many-body  to the few-body problem}
+
+\scriptsize
+\begin{center}
+\begin{pspicture}(10,6)
+%\psgrid
+
+\visible<1->{
+ % --------------------------- MIC CORE ------------------------------------- %  
+\rput(4,6){
+   \psframebox[linewidth=0,shadow=true,fillcolor=green!25,fillstyle=solid]{%
+    \scriptsize Microscopic models 
+   }%psframe
+   }%rput
+
+\rput(1,5){
+  \includegraphics[height=1.25cm]{\images/be11t_mic.eps} 
+   }%rput    
+
+\rput(8,5){
+   \parbox{0.8\columnwidth}{
+    \begin{itemize}    
+%    \item[\ding{52}] Achieved for 2-body (CDCC) 
+    \item[\ding{52}] Fragments described microscopically
+    \item[\ding{52}] Realistic NN interactions (Pauli properly accounted for) 
+    \item[\ding{54}] Numerically demanding / not simple interpretation.
+
+    \end{itemize}
+    }%parbox
+    }%rput
+}%visible
+
+ % --------------------------- INERT CORE ------------------------------------- %  
+\visible<2->{
+\psline[linecolor=orange!40,linewidth=4pt]{<->}(10.7,0)(10.7,6.0)
+\rput{-90}(11.,1.5){Few-body}
+\rput{-90}(11.,5.0){Many-body}
+
+\rput(4,1.3){
+   \psframebox[linewidth=0,framearc=0.2,shadow=true,fillcolor=green!25,fillstyle=solid]{
+    Inert cluster models
+   }%psframe
+   }%rput
+
+\rput(8,0.1){
+   \parbox{0.8\columnwidth}{
+    \begin{itemize}
+%    \item[\ding{54}] Ignores core-excitation admixtures and core transitions.
+    \item[\ding{54}] Ignores cluster excitations (only few-body d.o.f).
+    \item[\ding{54}] Phenomenological inter-cluster interactions (aprox.~Pauli). 
+    \item[\ding{52}] Exactly solvable (in some cases).
+    \item[\ding{52}] Achieved for 3-body and 4-body (eg.~coupled-channels, Faddeev).
+    \end{itemize}
+    }%parbox
+    }%rput
+
+\rput(1,0.2){
+  \includegraphics[height=1.25cm]{\images/be11t_inert.eps} 
+   }%rput    
+}%visible
+
+\visible<3->{
+ % --------------------------- CORE EXC ----------------------------------------- % 
+\rput(4,3.6){
+   \psframebox[linewidth=0,framearc=0.2,shadow=true,fillcolor=green!25,fillstyle=solid]{
+    \scriptsize Non-inert-core few-body models   
+   }%psframe
+   }%rput
+
+\rput(1,2.6){
+  \includegraphics[height=1.25cm]{\images/be11t_corex.eps} 
+   }%rput    
+
+\rput(8,2.6){
+   \parbox{0.8\columnwidth}{
+    \begin{itemize}    
+    \item[\ding{52}] Few-body + some relevant collective d.o.f. 
+%    \item[\ding{52}] Core excitation within collective model.
+    \item[\ding{52}] Pauli approximately accounted for.
+    \item[\ding{52}] Achieved for 3-body problems (coupled-channels, Faddeev).    
+    \end{itemize}
+    }%parbox
+    }%rput
+
+}%visible
+
+\end{pspicture}
+\end{center}
+
+\end{frame}
+
+
+
+
+%-------------------------------------------------------------------------------------
+\section{Description of elastic scattering with the optical model}
+\slide{}
+\begin{center}
+\psframebox[fillcolor=green!10,linecolor=blue,framearc=0.1,fillstyle=solid,framesep=5pt]{
+Single-channel approach to elastic scattering: the optical model
+}%psframe
+\end{center} 
+\end{frame}
+
+
+% -------------------------------------------------------------------------
+\begin{frame}{The optical model}
+
+\bi
+\setlength{\itemsep}{18pt}
+
+\item Elastic scattering angular distributions exhibit a large variety of patterns depending on the colliding system and energy. 
+
+
+% --------------- Relative cross sections ---------------------
+\begin{minipage}[t]{.30\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e5.eps}} \par}
+\end{figure}
+%\center{\bf Rutherford  scattering }
+\end{minipage}
+% -----------------------------------------------
+\begin{minipage}[t]{.30\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e10.eps}} \par}
+\end{figure}
+%\center{\bf Fresnel Scattering}
+\end{minipage}
+% -----------------------------------------------
+\begin{minipage}[t]{.30\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e25.eps}} \par}
+\end{figure}
+%\center{\bf Fraunh\"ofer Scattering}
+\end{minipage}
+% -----------------------------------------------
+
+
+\item The goal of the \textcolor{blue}{optical model} is to describe these features by using an effective potential (optical potential)
+
+\item In general, the optical potential contains an \textcolor{blue}{imaginary} part which is meant to account for \textcolor{blue}{absorptive (nonelastic)} processes. 
+
+\ei
+
+\end{frame}
+
+
+
+%--------------------------------------------
+\subsubsection{Boundary conditions}
+
+\slide{Elastic scattering in the optical model (no spin case)}
+%\textcolor{blue}{How does one describe the motion of a particle in quantum mechanics?}
+
+\begin{itemize}
+\setlength{\itemsep}{12pt}
+%\item {\verde Effective Hamiltonian}: $$H = T_{\bR} + H_\alpha(\xi_\alpha) + U(\bR) \quad \quad (U(\bR)~ \textrm{complex!}) $$
+
+\item {\verde Effective Hamiltonian}: $$H = T_{\bR} + U(\bR) \quad \quad (U(\bR)~ \textrm{complex!}) $$
+
+\item {\verde Schr\"odinger equation}:
+$$
+\psframebox[fillcolor=magenta!2,linecolor=red,framearc=0.1,fillstyle=solid,framesep=5pt]{ 
+[T_{\bR} + U(\bR) -E_\alpha] \chi^{(+)}_{0}(\bK,\bR) =0
+}%psframe
+\quad \quad (E_\alpha= \text{incident energy in CM}) 
+$$
+%{\red Second order differential equation with three variables $\bR$ !}
+%\begin{equation}
+%\nolabel
+%(H-E)\Psi(\vec r)=0
+%\end{equation}
+\item {\verde Boundary condition:} Plane wave plus spherical wave, multiplied by the {scattering amplitude} {\red $f(\theta, \phi)$}:
+
+$$
+\chi^{(+)}_{0}(\bK, \bR)  \rightarrow e^{i \bK \cdot \bR} + 
+                    {\red f(\theta, \phi)} \frac{e^{i KR }}{R}          
+\quad \quad K=\frac{\sqrt{2 \mu E_\alpha}}{\hbar}         
+$$
+
+\item {\verde Elastic differential cross section}:
+$$
+\frac{d\sigma}{d\Omega} = |f(\theta,\phi) | ^2
+$$
+
+
+
+\end{itemize}
+
+\end{frame}
+
+
+\slide{Partial wave decomposition}
+
+\begin{itemize}
+\item For a central potential [$U(\bR)=U(R)$], the scattering wavefunction can be expanded in spherical harmonics:  %, which are eigenfunctions of the angular momentum $\bf{L^2, L_z}$
+$$
+%\footnotesize
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,framesep=5pt]{ 
+\chi^{(+)}_0 (\bK,\bR)  
+%=\frac{4 \pi}{K R} \sum_{\ell } i^\ell \textcolor{blue}{\chi_{\ell}(K,R)} \sum_m Y^*_{\ell m}(\hat K) Y_{\ell m}(\hat R)
+= \frac{1}{K R} \sum_{\ell } i^\ell \textcolor{blue}{\chi_{\ell}(K,R)} (2 \ell+1) P_\ell(\cos \theta)
+}%psframe \el
+\quad 
+(\theta = \text{scattering angle})
+$$
+
+\item The radial wavefuntions \textcolor{blue}{$\chi_{\ell}(K,R)$} satisfy the equation:
+$$
+\left[- \frac{\hbar^{2}}{2\mu}\frac{d^{2}}{dR^{2}} + \frac{\hbar^{2}}{2\mu}\frac{\ell(\ell+1)}{R^{2}}+U(R)-E_0 \right] \textcolor{blue}{\chi_{\ell}(K,R)}=0.
+$$
+%\ding{43}{\it \red Several second order differential equation on one variables $R$.  Angular momentum conservation makes them uncoupled !}
+%\item {\verde $ C_{\ell} $ determined from the $U(R) \rightarrow 0$ limit}:
+
+\item For a zero potential ($U=0$) the solution is just the plane wave:
+\begin{align*}
+\chi^{(+)}_0 (\bK,\bR) = e^{i \bK \bR} 
+\quad
+\Rightarrow
+\quad
+\chi_\ell(K,R) &   \rightarrow F_\ell(KR)  
+                =  \frac{i}{2} [H^{(-)}_{\ell}(KR) - H^{(+)}_{\ell}(KR) ]
+\end{align*}
+
+
+%\item{Asymptotic boundary condition: beyond the range of short-range potentials:}
+%\bi
+%\item $\chi_\ell(K,R)$ must be regular at the origin:$ \chi_\ell(K,0) =0  $
+%\item  Beyond the range of the potentials:
+%\begin{align*}
+%\chi_\ell(K,R) &   \rightarrow F_\ell(KR) + {\red %T_\ell} H^{(+)}_{\ell}(KR)  \\
+%               & =  \frac{i}{2} [H^{(-)}_{\ell}(KR) - {\red S_\ell} H^{(+)}_{\ell}(KR) ]
+%\end{align*}
+where: \quad   $F_\ell(K R) \rightarrow \sin(KR-\ell \pi/2)$ \quad \quad ; \quad \quad  
+ $H^{(\pm)}_{\ell}(KR)   \rightarrow e^{\pm i (KR - \ell \pi/2)}$
+ 
+\end{itemize}
+
+\end{frame}
+
+
+% -------------------------------------------------------------------------
+\slide{Non-zero potential:  asymptotic behaviour}
+%\begin{block}{For $R\gg$ $\Rightarrow$ $U(R)=0$}
+\begin{itemize}
+\item For $R\gg$  $\Rightarrow$ $U(R)=0$ $\Rightarrow$ $\chi_{\ell}(K,R)$ will be a combination of $F_\ell$ and $G_\ell$
+$$
+%\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,framesep=5pt]{
+% \chi_{\ell}(K,R) = A  F_\ell(K R) + B G_\ell(KR)
+%}%psf
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,framesep=5pt]{
+ F_\ell(K R) \rightarrow \sin(KR-\ell \pi/2)
+\quad \quad G_\ell(KR) \rightarrow \cos (KR -\ell \pi/2) 
+}%ps
+$$ 
+or their {\it outgoing/ingoing} combinations:
+$$
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,framesep=5pt]{
+H^{(\pm)}(KR) \equiv G_\ell(KR)  \pm i F_\ell (KR)   \rightarrow e^{\pm i (KR - \ell \pi/2)}
+}
+$$
+
+
+
+\item The specific combination is determined by the physical boundary condition:
+\vspace{0.25cm}
+
+\psframebox[fillcolor=magenta!3,linecolor=red,framearc=0.1,fillstyle=solid,framesep=-5pt]{
+\parbox{0.9\textwidth}{
+\begin{align*}
+    \quad  & \chi^{(+)}_0(\bK\bR)  &  \rightarrow \quad &  e^{i \bK \cdot \bR}  \quad & +  \quad  &     f(\theta) \frac{e^{i KR }}{R}   \\
+    \quad  &  \Downarrow          &              \quad  &  \Downarrow       \quad  &     \quad  &         \Downarrow                  \\
+U=0 \quad  & \chi_{\ell}(K R)     &  \rightarrow  \quad &   F_\ell (KR)  \quad  & +\quad  &     0    \\ 
+U \neq0 \quad & \chi_{\ell}(K R) &  \rightarrow  \quad  &    F_\ell (KR) \quad  & +     \quad  &      {\red T_\ell} 
+H^{(+)}(KR)
+% [G_\ell(KR)  + i F_\ell (KR)]    
+\end{align*}
+}%parbox
+}%psframe
+%\end{block}
+
+\vspace{0.5cm}
+\item[\ding{43}] The coefficients ${\red T_\ell}$ are to be determined by numerical integration.
+% $ H^{(\pm)}(KR) \equiv G_\ell(KR)  \pm i F_\ell (KR)   \rightarrow e^{\pm i (KR - \ell \pi/2)}$ \quad (outgoing/ingoing free solutions)
+\end{itemize}
+\end{frame}
+
+\subsubsection{S matrix and T matrix}
+% -------------------------------------------------------------------------
+\slide{Numerical integration of Schrodinger equation}
+
+%{\brick Numerical procedure:}
+
+\begin{enumerate}
+\item{Fix a {\em matching radius}, $R_m$, such that $U(R_m) \approx 0$}
+\item{Integrate $\chi_\ell(R)$ from $R=0$ up to $R_m$, starting with the condition:}
+$$
+\lim_{R \rightarrow 0} \chi_\ell(K,R) = 0
+$$
+
+\item{At $R=R_m$ impose the boundary condition:}
+\begin{align*}
+%f_L(R) \rightarrow I_L(R) - {\red S_\ell} O_L(R)
+\chi_\ell(K,R) &   \rightarrow F_\ell(KR) + {\red T_\ell} H^{(+)}_{\ell}(KR)  \\
+               & =  \frac{i}{2} [H^{(-)}_{\ell}(KR) - {\red S_\ell} H^{(+)}_{\ell}(KR) ]
+\end{align*}
+
+
+%\item[\ding{43}] {\red $T_\ell$}=transmission coefficient  \quad {\red $S_\ell$}=reflection coefficient (S-matrix)
+\item[\ding{43}]  {\red $S_\ell$}=$1 + 2i T_\ell $ = \textbf{S-matrix}
+
+\item {\blue Phase-shifts:}
+$$
+\psframebox[fillcolor=red!1,fillstyle=solid,framearc=0.15,linecolor=brick]{
+ S_\ell  \equiv   e^{i 2 \delta_\ell }
+}%psframe
+\quad \quad 
+\psframebox[fillcolor=red!1,fillstyle=solid,framearc=0.15,linecolor=brick]{
+ T_\ell= e^{i  \delta_\ell } \sin(\delta_\ell)
+}%psframe
+$$
+
+$$
+\psframebox[fillcolor=red!1,fillstyle=solid,framearc=0.15,linecolor=brick]{
+\chi_\ell(K,R)    \rightarrow e^{i \delta_{\ell}} \sin(KR + \delta_{\ell}-\ell \pi/2){}
+}%psframe
+$$
+
+\end{enumerate}
+
+\end{frame}
+
+
+
+\subsection{Differential cross sections}
+
+% -------------------------------------------------------------------------
+\subsubsection{Scattering amplitudes and cross sections}
+\begin{frame}[fragile]{The scattering amplitude}
+
+\begin{itemize}
+\gitem {Replace the asymptotic $\chi_{\ell}(K,R)$ in the general expansion:}
+\begin{align*}
+\chi^{(+)}(\bK,\bR) &= \frac{1}{K R} \sum_{\ell } i^\ell (2 \ell+1) \textcolor{blue} {\chi_{\ell}(K,R)}  P_\ell(\cos \theta) \\
+ & \rightarrow \frac{1}{K R} \sum_{\ell } i^\ell   (2 \ell+1) \textcolor{blue}{ 
+\left [  F_\ell (KR)  + T_\ell  H^{(+)}(KR) \right ] } 
+ P_\ell(\cos \theta)
+\end{align*}
+\gitem{The scattering amplitude is the coefficient of  $e^{i K R}/{R}$ in $\chi^{(+)}(\bK,\bR)$}:
+
+
+
+\begin{center}
+\psframebox[fillcolor=magenta!3,linecolor=red,framearc=0.1,fillstyle=solid,framesep=-7pt]{
+\parbox{0.7\textwidth}{
+\begin{align*} 
+f(\theta)  & = \frac{1}{K} \sum_{\ell} (2 \ell +1)  \textcolor{blue}{T_\ell}  P_{\ell}(\cos \theta) \nonumber \\ 
+           & = \frac{1}{2 i K} \sum_{\ell}(2 \ell +1)  \textcolor{blue}{ (S_\ell -1 )} P_{\ell}(\cos \theta) .
+\end{align*} 
+}%parbox
+}%psframe
+\end{center}
+
+\gitem{Elastic differential cross section:}
+$$
+\frac{d\sigma}{d\Omega} = | f(\theta) | ^ 2
+$$ 
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+
+% -------------------------------------------------------------------------
+\slide{Interpretation of the S-matrix (single-channel case)}
+
+\only<1>{
+\begin{figure}{\par \resizebox*{0.7\textwidth}{!}
+{\includegraphics{\images/smat.png}} \par}
+\end{figure}
+}%only
+
+\only<2> {
+
+\begin{columns}
+\column{0.5\columnwidth}
+
+\begin{itemize}
+\footnotesize
+\setlength{\itemsep}{11pt}
+\item $S_\ell$ =coefficient of the outgoing wave for partial wave $\ell$.
+
+\item For $U=0$ $\Rightarrow$ $S_\ell=1$
+
+\item $|S_\ell|^2$ is the {\it survival} probability for the partial wave $\ell$:
+\begin{itemize}
+\item $U$ real $\Rightarrow$ $|S_\ell|=1$   $\Rightarrow$ $\delta_\ell$ real 
+\item   $U$ complex $\Rightarrow$ $|S_\ell| < 1$  $\Rightarrow$ $\delta_\ell$ complex
+\end{itemize}
+
+\item For $\ell\gg $ $\Rightarrow$ $S_\ell \rightarrow 1$ 
+
+%\item Phase-shifts: $S_\ell= e^{2 i \delta_\ell}$
+\item Sign of $Re[\delta$]:
+
+\begin{itemize}
+\item $Re[\delta] >0$ $\Rightarrow$ attractive potential
+\item $Re[\delta] <0$ $\Rightarrow$ repulsive potential
+\item $Re[\delta] =0$  ($S_\ell=1$) $\Rightarrow$ no potential ($U(R)=0$)
+\end{itemize}
+%$U(R)=0$ $\Rightarrow$ No scattering $\Rightarrow$ $S_\ell=1$ $\Rightarrow$ $\delta_\ell=0$
+
+\end{itemize}
+
+\column{0.5\columnwidth}
+\includegraphics[width=0.85\columnwidth]{\images/phase_shift_sign.eps}
+\end{columns}
+
+}%only
+
+
+
+\only<3>{
+
+
+Effective potential:
+$$
+V_\mathrm{eff}(r)= V_N(r) + V_C(r) + \frac{\ell (\ell+1) \hbar^2}{2 \mu r^2}
+$$
+
+
+As the $\ell$ value increases, so does the centrifugal potential, preventing the projectile from approaching the target and hence reducing the effect of the nuclear (real and imaginary) potentials. Thus, for $\ell\gg $ $\Rightarrow$ $S_\ell \rightarrow 1$ 
+
+
+
+
+\vspace{1.5cm}
+
+\begin{center}\includegraphics[width=0.45\columnwidth]{\images/veff_vcent.eps} \end{center}
+}%only
+
+\end{frame}
+
+
+
+
+%\begin{frame}{Multi-channel case: Coupled channels}
+%A one-slide approach to coupled channels, introducing coupling potentials and S-matrices?
+%\end{frame}
+
+
+
+\subsection{Coulomb plus nuclear interaction}
+
+% -------------------------------------------------------------------------
+\slide{Coulomb plus nuclear case}
+{\verde Radial equation:}
+\begin{columns}
+%\column{0.5\linewidth}
+\begin{column}[t]{0.55\textwidth}
+$$
+\psframebox[fillcolor=magenta!3,linecolor=red,framearc=0.1,framesep=2pt]{
+\left [ \frac{d^2}{dR^2} + K^2 - {\blue \frac{2 \eta K}{R}} +
+   \frac{2 \mu}{\hbar^2}U(R)+ \frac{\ell (\ell +1)}{R^2} \right ]  \chi_\ell(K, R) = 0
+}%psframe
+$$
+\end{column} %\hfill
+\hspace{0.5cm}
+\begin{column}[t]{0.4\textwidth}
+\vspace{0.4cm}
+%\hspace{1.5cm}
+%\hfill
+$$
+\small
+\psframebox[linecolor=blue,framearc=0.1,framesep=2pt]{
+\eta= \frac{Z_p Z_t e^2}{4 \pi \epsilon_0 \hbar v } = \frac{Z_p Z_t e^2 \mu}{4 \pi \epsilon_0 \hbar^2 K}
+}%psframe
+$$
+\begin{center}(Sommerfeld parameter) \end{center}
+\end{column}
+\end{columns}
+
+
+
+%\begin{block}{Pure Coulomb wave}
+%\end{block}
+
+{\verde Asymptotic condition:}
+$$
+\chi^{(+)}(\bK,\bR)  \rightarrow e^{i [\bK \cdot \bR +\eta \log (kR-\bK \cdot \bR )]}+ 
+                    f(\theta) \frac{e^{i ( KR- \eta \log 2 K R)}}{R}  
+$$
+
+%\begin{block}{Asymptotic condition}
+
+\begin{columns}
+\column{0.55\columnwidth}
+\small
+\psframebox[fillcolor=magenta!3,linecolor=red,framearc=0.1,fillstyle=solid,framesep=0pt]{
+\parbox{0.95\textwidth}{
+\begin{align*}
+\chi_\ell (K,R) & \rightarrow {\red e^{i \sigma_\ell}} \left [ F_\ell (\eta,KR) + T_\ell H^{(+)}_\ell (\eta, KR)  \right ]  \\
+              & = \frac{i}{2} {\red e^{i \sigma_\ell}}\left [  H^{(-)}_\ell  (\eta,KR) -S_\ell H^{(+)}_\ell (\eta, KR)  \right ] 
+\end{align*}
+}%parbox
+}%psframe
+\column{0.44\columnwidth}
+\small
+\ding{43} $\sigma_{\ell} (\eta)$=Coulomb phase shift \\
+\ding{43} $F_{\ell} (\eta,KR)$=regular Coulomb wave \\
+\ding{43} $H^{(\pm)}_\ell (\eta,KR)$=outgoing/ingoing Coulomb wave
+%\end{block}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+
+
+% -------------------------------------------------------------------------
+\slide{Coulomb plus nuclear case: scattering amplitude}
+
+Total scattering amplitude:
+$$
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=solid,framesep=7pt]{
+f(\theta) = f_C (\theta) + \frac{1}{2 i K} \sum_{\ell} (2 \ell +1) e^{2 i \sigma_\ell} (S_\ell -1) P_\ell(\cos \theta)
+}%psframe
+$$
+
+\ding{43}
+$f_C(\theta)$ is the amplitude for pure Coulomb:
+
+$$
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=solid,framesep=7pt]{
+\frac{d\sigma_R}{d \Omega} = |f_C(\theta)|^2 = \frac{\eta^2}{4 K^2 \sin^4(\frac{1}{2}\theta) } = 
+\left ( \frac{Z_p Z_t e^2}{16 \pi \epsilon_0  E}  \right )^2  \frac{1}{\sin^4(\frac{1}{2}\theta)}
+}%psframe
+$$
+
+\end{frame}
+
+%-----------------------------------
+%\subsubsection{Integrated cross section: Elastic and reaction cross sections}
+
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+{Integrated cross sections}
+
+\begin{itemize}
+\item Total {\blue elastic} cross section (only uncharged particles!). Is a measurement of the particles that abandon the incident beam, to be scattered elastically to different angles.
+$$
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=none,framesep=2pt]{
+\sigma_{el} = \int d\Omega \frac{d\sigma}{d\Omega} = \frac{\pi}{K^2} \sum_{\ell} (2 \ell + 1) |1 - S_\ell|^2  =  \frac{4 \pi}{K^2} \sum_{\ell} (2 \ell + 1) |T_\ell|^2  
+}%
+$$
+When there are no potentials (real or imaginary), $S_\ell = 1$, the total elastic cross section is zero (no scattering).
+ 
+\item Total {\blue reaction} cross section. Is a measurement of the particles that abandon the incident beam to give rise to different non-elastic reaction processes.
+$$
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=none,framesep=2pt]{
+\sigma_{reac} = \frac{\pi}{K^2} \sum_{\ell} (2 \ell + 1) (1 - |S_\ell|^2)}
+$$
+When there are no imaginary potentials, there is no loss of flux from the elastic channel, $|S_\ell| = 1$, the total reaction cross section is zero.
+
+
+\end{itemize}
+
+\end{frame}
+
+%-------------------------------------------------------------------------------------
+\subsection{Classical interpretation}
+
+\slide{}
+\begin{center}
+\psframebox[fillcolor=green!10,linecolor=blue,framearc=0.1,fillstyle=solid,framesep=5pt]{
+Classical interpretation of elastic scattering
+}%psframe
+\end{center} 
+\end{frame}
+
+
+%--------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Equations of  classical trajectories}
+\begin{figure}{\par \resizebox*{0.3\textwidth}{!}
+{\includegraphics{\images/Ruthdisp.eps}} \par}
+\end{figure}
+\begin{itemize}
+
+\gitem{A classical trajectory} can be characterized by the polar variables $(r,\phi)$. The equation of the trajectory is determined by the following key concepts:
+
+\gitem{Energy conservation:}
+\begin{displaymath}
+E=\frac{1}{2} \mu \left(\frac {dr}{dt}\right)^2 + \frac{L^2}{2\mu r^2}+V(r) = \frac{1}{2} \mu v_0^2
+\end{displaymath}
+
+\gitem{Angular momentum conservation:}
+$$
+L=\mu r^2\frac{d\phi}{dt} = \mu \cdot v_0 \cdot b 
+$$
+\gitem{Impact parameter $b$:} Is the distance of the target to the straight line of the projectile. Determines the angular momentum.
+\end{itemize}
+\end{frame}
+
+
+
+%---------------------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\begin{itemize}
+
+\gitem{Time independent differential equation} for the trajectory.
+$$
+\psframebox[linecolor=red,framearc=0.1,framesep=0.1]{
+\frac{d\phi}{dr}=
+\frac{L}{r^2\sqrt{2\mu\left[E-\frac{L^2}{2\mu r^2}-V(r)\right]}}
+}%psframe
+$$
+
+
+\gitem{Effective potential:} Includes the centrigugal term.
+\begin{displaymath}
+ V_{{\rm ef},L}(r) \equiv \frac{L^2}{2\mu r^2}+V(r) = E \left(\frac{b}{r}\right)^2 + V(r)
+\end{displaymath}
+
+%\pause 
+
+\gitem{Distance of closest approach:}  In it the radial velocity vanishes, and the trajectory inverts its motion (Turning point). 
+$$
+\frac{dr}{dt}=0 \quad  \Rightarrow \quad E=  \frac{L^2}{2\mu r_{CA}^2}+V(r_{CA})
+%V_{{\rm ef},L}(r_{rmin}) =
+$$
+%corresponde a $\phi$=0.
+
+%\pause 
+\gitem{Trajectory:}
+\begin{displaymath}
+\psframebox[linecolor=red,framearc=0.1,framesep=0.1]{
+\phi(r)=
+\int_{r_{CA}}^r  du
+\frac{L}{u^2\sqrt{2\mu\left[E- V_{{\rm ef},L}(u)\right]}}  
+}%psfrmae 
+\end{displaymath}
+\gitem{Asymptotic angle:} $\phi_A = \phi(\infty)$ 
+
+
+\end{itemize}
+\end{frame}
+
+
+
+%---------------------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Distance of closest approach}
+
+
+
+\ding{43} For $b=0$ (head-on collision) $\Rightarrow$  $E= V(r_{CA})$. For Coulomb:
+
+$$ r_{CA}= \frac{e^2}{4\pi \epsilon_0}\frac{Z_1 Z_2}{E} = 2 a_0  $$ 
+
+
+\begin{figure}{\par \resizebox*{0.4\textwidth}{!}
+{\includegraphics{\images/he4pb_veff_coul_b0.eps}} \par}
+\end{figure}
+
+
+\ding{43} $a_0$ is the length scale of the Coulomb interaction, given by half the distance of closest approach. 
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\ding{43} For $b> 0$ $ \Rightarrow$ $r_{CA}> 2 a_0$. For example, for pure Coulomb:
+$$
+r_{CA}= a_0 + \sqrt{a_0^2 + b^2}  \quad \quad (Coulomb )
+$$ 
+\begin{figure}{\par \resizebox*{0.55\textwidth}{!}
+{\includegraphics{\images/he4pb_veff_coul.eps}} \par}
+\end{figure}
+\end{frame}
+
+\subsubsection{Deflection function and classical cros section}
+%-------------------------------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Deflection function}
+
+\begin{minipage}[t]{.45\textwidth}
+\begin{figure}{\par \resizebox*{0.85\textwidth}{!}
+{\includegraphics{\images/Ruthdisp.eps}} \par}
+\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.45\textwidth}
+%\vspace{1cm}
+%{\Large
+
+
+$$
+\psframebox[linecolor=red,framearc=0.1,framesep=0.1]{
+2 \varphi_A + \theta = \pi 
+}%psfrmae
+$$
+%}%large
+
+\begin{center}$\theta$= scattering  angle \end{center}
+\end{minipage}
+
+%\pause 
+\bigskip
+
+{\verde Deflection function:} is the  expression  $\Theta(b)$ of the deflection angle $\Theta$ as a function of the impact parameter $b$. 
+
+%\bigskip
+%Since $L=\mu \cdot v_0 \cdot b$,
+
+\begin{equation}
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+\nonumber
+\Theta(b) = \pi -2 \int_{r_0}^{\infty} \frac{b}{r^2}\frac{dr}{\sqrt{1 - \frac{V(r)}{E} - \frac{b^2}{r^2}}}
+}%framebox
+\end{equation}
+\end{frame}
+
+
+
+%-------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Deflection angle vs deflection function}
+
+%Strictly, the deflection angle can be negative or exceed $2 \pi$: 
+
+\begin{itemize}
+\gitem{Scattering angle:} Angle formed by the final direction and the initial direction. $0 \leq \theta \leq \pi$. It is the quantity observed experimentally in a scattering experiment.
+\gitem{Deflection angle:} Angle which is covered by the trajectory $\Theta = \pm \theta + 2n \pi$. Several deflection angles can correspond to the same scattering angle.
+\end{itemize}
+
+%\vspace{0.5cm}
+
+\begin{columns}[t]
+\column{.5\textwidth}
+%\twocolumn[frsep=-5pt]{
+%\begin{center}\miframebox{NEAR-SIDE TRAJECTORIES}\end{center}
+\begin{figure}{\par \resizebox*{0.85\textwidth}{!}
+{\includegraphics{\images/orbiting.eps}} \par}
+\end{figure}
+\column{.5\textwidth}
+%\begin{center}\miframebox{FAR-SIDE TRAJECTORIES}\end{center}
+\begin{figure}{\par \resizebox*{0.85\textwidth}{!}
+{\includegraphics{\images/negative-theta.eps}} \par}
+\end{figure}
+\end{columns}%twocolumn
+
+\bigskip
+
+\footnotesize
+
+\begin{itemize}
+%\item[\ding{43}] The form of $\Theta(b)$ is entirely determined by $V(r)$.
+
+\item[\ding{43}] For each impact parameter {\blue $b$} there is a single value of the deflection angle $\Theta$ and of the scattering angle {\blue $\theta(b)$}.
+\item[\ding{43}] For a given scattering angle {\blue $\theta$} there may be  several trajectories, corresponding to different values of {\blue $b$}.
+\item[\ding{43}] $\Theta= \theta > 0$ is a  \textcolor{blue}{near-side} trajectory (the projectile bypasses the target ``near'' the detector).  
+\item[\ding{43}] $\Theta = - \theta <0$ is a \textcolor{blue}{far-side} trajectory  (the projectile bypasses the target ``far'' from the detector). 
+\item[\ding{43}] $\Theta = \pm \theta + 2 \pi n$ are \textcolor{blue}{orbiting} trajectories  (the projectile ``orbits'' around the target). 
+\end{itemize}
+
+%\ding{43} {\em Several trajectories ({\verde $b$}) can contribute to the same scattering angle {\verde $\theta$}!}
+
+\end{frame}
+
+
+
+%---------------------------------------------------------
+\begin{frame}{Deflection function and classical cross section}
+
+
+\bi
+\item For a given projectile-target potential $V(r)$, the deflection function can be obtained for  each impact parameter solving:
+$$
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+\nonumber
+\Theta(b) = \pi -2 \int_{r_0}^{\infty} \frac{b}{r^2}\frac{dr}{\sqrt{1 - \frac{V(r)}{E} - \frac{b^2}{r^2}}}
+}%framebox
+$$
+
+
+\item The \textcolor{blue}{classical scattering cross section} is a function of the deflection function (or scattering angle) according to: 
+$$
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+\frac{d\sigma}{d\Omega} 
+%=\frac{I_e}{n_T \, \Phi_p \, \delta\Omega}
+%=\frac{\Phi_p \cdot 2 \pi b db}{1 \cdot \Phi_p \cdot   2 \pi \sin(\theta) d\theta }
+= \frac{b}{\sin(\theta)}\left|\frac{db}{d\theta}\right|
+}%psframe
+$$
+
+\ei
+
+
+\end{frame}
+
+
+
+
+%-------------------------------------------------------------------------------------
+\begin{frame}{Classical deflection function for point Coulomb case}
+
+\bi
+%\item Classical trajectories are conveniently described by the \textcolor{blue}{deflection function}, $\Theta(b)$, which gives the scattering angle for a given incident parameter.
+
+\item For a point Coulomb potential, the deflection function is given analytically by:
+
+%\begin{itemize}
+%\item Deflection function:
+$$
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+b= a_0 \cot\left( \frac{\theta}{2} \right) %=\frac{r_0}{2} \cot \left( \frac{\theta}{2} \right)
+}%psframebox 
+$$
+
+%\vspace{1cm}
+
+\begin{columns}[t]
+\column{.5\textwidth}
+\begin{figure}{\par \resizebox*{0.8\textwidth}{!}
+{\includegraphics{\images/coulomb-trajectories.eps}} \par}
+\end{figure}
+%
+\column{.5\textwidth}
+\begin{figure}{\par \resizebox*{0.7\textwidth}{!}
+{\includegraphics{\images/coul-deflect.eps}} \par}
+\end{figure}
+\end{columns}%twocolumn
+
+\item[\ding{43}] When $b$ increases, for a given energy $E$,  $r_{CA}$ increases and $\theta$ decreases.
+
+\item[\ding{43}] When $E$ increases, for a given $b$,  $r_{CA}$ decreases and $\theta$ decreases.
+\end{itemize}
+\end{frame}
+
+
+
+%-------------------------------------------------------------------------------------
+\begin{frame}{ Coulomb + nuclear scattering: deflection function}
+%\only<1>{
+%\begin{figure}{\par \resizebox*{0.5\textwidth}{!}
+%{\includegraphics{\images/he4pb_deflect.eps}} \par}
+%\end{figure}
+%}%onslide
+
+%\only<2>{
+%\begin{figure}{\par \resizebox*{0.5\textwidth}{!}
+%{\includegraphics{\images/he4pb_deflect_largeb.eps}} %\par}
+%\end{figure}
+
+\ding{43} For large values of {\verde $b$}, the scattering is Coulombic (the projectile does not feel the nuclear potential). 
+%}%onslide
+
+%\only<3>{
+
+\begin{columns}[t]
+\column{.5\textwidth}
+%\twocolumn[lcolwidth=0.55\linewidth, rcolwidth=0.5\linewidth,frsep=-2cm]{
+
+\begin{figure}{\par \resizebox*{1.0\textwidth}{!}
+{\includegraphics{\images/he4pb_deflect_3b.eps}} \par}
+\end{figure}
+%
+\column{.5\textwidth}
+\begin{figure}{\par \resizebox*{1.0\textwidth}{!}
+{\includegraphics{\images/classical-trajectories-satchler-3b.eps}} \par}
+\end{figure}
+\end{columns}%twocol
+
+%\bigskip
+\ding{43} For a given scattering angle $\theta$ there are in general 3 values of $b$ contributing to this angle. (1) is the Coulomb trajectory, (2) is the nuclear near-side trajectory, and (3) is the nuclear far-side trajectory.
+
+%}%onslide
+\end{frame}
+
+\begin{frame}{Coulomb + nuclear scattering: Rainbow}
+
+
+%\only<4>{
+\begin{figure}{\par \resizebox*{0.5\textwidth}{!}
+{\includegraphics{\images/he4pb_deflect_rainbow.eps}} \par}
+\end{figure}
+
+\begin{itemize}
+\item[\ding{43}] The deflection function has a maximum at $b=b_r$  $\rightarrow$  $\Theta_r$ ({\verde rainbow angle})
+\item[\ding{43}] For $b=b_r$:
+ $ \frac{d\Theta}{db} =0  \Rightarrow \frac{db}{d\Theta} =0 \Rightarrow  \frac{d\sigma}{d\Omega} \to \infty $
+\item[\ding{43}] In the vicinity of $b_r$, many trajectories give approximately the same scattering angle ($\Theta_r$)
+\item[\ding{43}] For angles greater than the rainbow ($\theta > \Theta_r$), neither the Coulomb trajectories nor the nuclear nearside trajectories  contribute to the cross section so, classically, there is a sharp decrease in the differential cross section for ($\theta > \Theta_r$). This is the ``{\verde shadow region}''.
+\end{itemize}
+%}%onslide
+
+\end{frame}
+
+
+
+%----------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+\frametitle{Coulomb and nuclear scattering: Orbiting}
+
+%\only<5>{
+%\twocolumn[lcolwidth=0.55\linewidth, rcolwidth=0.5\linewidth,frsep=-2cm]{
+\begin{columns}[T]
+\column{.45\textwidth}
+\begin{figure}{\par \resizebox*{0.85\textwidth}{!}
+{\includegraphics{\images/he4pb_deflect_orbiting.eps}} \par}
+\end{figure}
+%
+\column{.45\textwidth}
+\begin{figure}{\par \resizebox*{0.6\textwidth}{!}
+{\includegraphics{\images/trajectories-3.eps}} \par}
+\end{figure}
+\end{columns}
+
+\bigskip
+
+\begin{itemize}
+ \footnotesize
+\gitem{Orbiting:} For each scattering energy, above the Coulomb barrier, there is a certain impact parameter $b_o$ which makes the effective barrier exactly equal to the scattering energy $E= V_B(b_o)$, $R_{CA} = R_B(b_0)$. This trajectory spends a long time at distances $r \simeq R_B(b_0)$,  making  the deflection angle very large and negative. This is the ``orbiting''.
+\item Impact parameters slightly larger than  $b_0$ produce very different scattering angles. Thus, $db/d \theta$ is very small, so orbiting has a very small impact on the cross sections. Trajectories with $b < b_o$ imply overlap of the nuclei, so they should not contribute to elastic scattering. However, they will be crucial for fusion.
+\end{itemize}
+%}%onslide
+\end{frame}
+
+
+
+%----------------------------------------------------------------------------------
+\begin{frame}{Atmospheric rainbow}
+
+%\twocolumn{
+\begin{columns}[T]
+\column{.5\textwidth}
+\begin{figure}{\par \resizebox*{0.9\textwidth}{!}
+{\includegraphics{\images/foto-arco-iris.eps}} \par}
+\end{figure}
+\column{.5\textwidth}
+\begin{figure}{\par \resizebox*{0.9\textwidth}{!}
+{\includegraphics{\images/Rainbow1.eps}} \par}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+
+%------------------------------------------------------------------------------------
+\begin{frame}{Coulomb + nuclear scattering: undulatory effects}
+\begin{figure}{\par \resizebox*{0.5\textwidth}{!}
+{\includegraphics{\images/classical-rainbow.eps}} \par}
+\end{figure}
+
+\ding{43} In a treatment beyond the classical limit,  several trajectories may interfere, and the divergence at the rainbow is smoothed.
+\end{frame}
+
+
+
+
+
+%---------------------------------------------
+\section{Elastic scattering phenomenology}
+%--------------------------------------------
+
+\slide{}
+\begin{center}
+\psframebox[fillcolor=green!10,linecolor=blue,framearc=0.1,fillstyle=solid,framesep=5pt]{
+Elastic  scattering phenomenology
+}%psframe
+\end{center} 
+\end{frame}
+
+
+\subsection{Nucleon-Nucleus elastic scattering}
+% ---------------------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+{Nucleon-nucleus elastic scattering: Potential}
+Accurate global nucleon-nucleus global parametrizations are available. A popular one is that of Koning and Delaroche:
+\cita{Nuclear Physics A 713 (2003) 231}
+
+$$
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+\begin{aligned}
+\mathcal{U}(r, E)=&-\mathcal{V}_{V}(r, E)-i \mathcal{W}_{V}(r, E)-i \mathcal{W}_{D}(r, E) \\
+&+\mathcal{V}_{S O}(r, E)  \vec{\ell} \cdot \vec{\sigma} + i \mathcal{W}_{S O}(r, E)  \vec{\ell} \cdot \vec{\sigma} + \mathcal{V}_{C}(r)
+\end{aligned}
+}%
+$$
+
+Contain real and imaginary nuclear contributions, spin-orbit potentials, and Coulomb interaction for protons.
+
+
+%\begin{comment}
+$$
+\mathcal{V}_{V}(r, E)={V_{V}(E) \over  1+\exp \left[\left(r-R_V\right) / a_V\right]}  \dots
+$$
+The radial dependence of the nucleon-nucleus potential is given in terms of the Woods- Saxon form, and its derivative.
+
+
+\end{frame}
+
+
+% ---------------------------------------------------------------------------
+\begin{frame}<presentation:0>[noframenumbering,allowframebreaks]
+{Nucleon-Nucleus elastic scattering:differential cross sections}
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{\images/kd_example.eps}
+\end{center}
+
+\begin{itemize}
+\item The oscillating pattern of the differential cross sections comes from the interference of the contributions to the scattering amplitudes of partial waves corresponding to different $\ell$ values.
+\item 
+At smaller scattering energies, the $\ell =0$ contribution dominates for neutron scattering, so differential cross sections are approximately angle-independent.
+ \end{itemize}
+
+\end{frame}
+
+\subsection{Nucleus-nucleus scattering}
+
+\subsubsection{Optical potential}
+% ---------------------------------------------------------------------------
+\slide{Nucleus-nucleus scattering: Optical Potential}
+
+{\brick Optical potential:} ${\cal V} \approx U(r)= U_\mathrm{nuc}(r) +  V_\mathrm{coul}(r) $
+
+%\bigskip
+
+
+\begin{itemize}
+ \setlength{\itemsep}{10pt}
+\item {\blue Coulomb potential:} charge sphere distribution
+\begin{displaymath}
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+V_\mathrm{coul}(r)=\left\{ \begin{array}{ll}
+\frac{Z_1 Z_2 e^2}{2 R_c} \left( 3- \frac{r^2}{R_c^2}\right) & \textrm{if $r \leq R_c$} \\
+\frac{Z_1 Z_2 e^2}{r}  & \textrm{if $r \geq R_c$} 
+\end{array} \right .
+}%psframebox
+\end{displaymath}
+
+\item {\blue Nuclear potential (complex):} Eg.~Woods-Saxon parametrization
+\begin{equation}
+\nonumber
+\psframebox[fillcolor=yellow,linecolor=red,framearc=0.1]{
+U_\mathrm{nuc}(r)=V(r) + i W(r) = -\frac{V_0(E)}{1+\exp\left(\frac{r-R_V}{a_V}\right)}- i~\frac{W_0(E)}{1+\exp\left(\frac{r-R_W}{a_W}\right)}
+}%psframebox
+\end{equation}
+
+\item {\blue Potential parameters:} 6, fitted to reproduce the elastic differential cross sections.
+\bi 
+\item Depths $V_0(E), W_0(E)$; 
+\item Radii  $R_{V,W}= r_{V,W} (A_p^{1/3} + A_t^{1/3})$.   $r_V \approx r_W  \sim 1.1-1.4$~fm.
+\item  Difuseness  $a_V \approx a_W \sim 0.5-0.7$~fm
+\ei
+%\ding{233} If the projectile and/or target have nonzero spin, a spin-orbit term is usually added, to describe scattering of polarized nuclei.
+
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------
+\subsubsection{The Coulomb Barrier}
+
+\slide{Nucleus-nucleus scattering: The Coulomb barrier}
+
+
+%{\brick Effective potential:} $U(r)= U_{nuc}(r) +  U_{coul}(r) $
+
+\begin{figure}{\par \resizebox*{0.5\textwidth}{!}
+{\includegraphics{\images/he4ni_veff_fix.eps}} \par}
+\end{figure}
+\bi
+\item The maximum of $V_N(r)+V_C(r)$ defines the Coulomb barrier. The radius of the barrier is {\verde $R_b$}. The height of the barrier is {\verde $V_b = V_N(R_b)+ V_C(R_b)$ }
+
+\item As a {\bf rough approximation,} 
+$$
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=none,framesep=2pt]{
+R_b \simeq 1.44(A_p^{1/3} + A_t^{1/3})~\textrm{fm}
+}%psframe
+\quad
+\psframebox[fillcolor=magenta!5,linecolor=red,framearc=0.1,fillstyle=none,framesep=2pt]{
+ V_b \simeq \frac{Z_p Z_t e^2}{4 \pi \epsilon_0 R_b} \approx \frac{Z_p Z_t}{(A_p^{1/3} + A_t^{1/3})} ~ \textrm{[MeV]}
+}%psframe
+$$
+\ei
+
+\end{frame}
+% ------------------
+
+%--------------------------------------------
+\subsubsection{Strong absorption}
+%---------------------------------------------
+
+
+% ----------------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------------
+\begin{frame}[fragile]{Nucleus-Nucleus Elastic scattering: Strong absorption}
+
+\bi 
+\small
+\item The \textcolor{blue}{nuclear attraction} is determined by the \textcolor{blue}{real part} of the optical potential $V(r)$. Together with the Coulomb potential, determines the Coulomb barrier.
+
+\item The \textcolor{blue}{absorption}, which corresponds to the removal of flux from the elastic channel, is determined by the \textcolor{blue}{imaginary part} of the optical potential $W(r)$.
+
+\item  Elastic scattering of heavy nuclei (beyond He) displays strong absorption. One can define a \textcolor{blue}{grazing angular momentum} ($\ell_g$), such that: 
+\bi
+\item $|S_\ell| \approx 0$ when $\ell \ll \ell_g$ and $|S_\ell| \to 1$ when $\ell \gg \ell_g$. 
+\item A convenient quantitative definition of the grazing angular momentum ($\ell_g$) is provided by the condition $|S(\ell_g)|\simeq \half$
+\ei
+%corresponds to a classical trajectory where nuclei just touch each other, at a distance $R_g$, called the Strong absorption radius.
+\ei
+
+\bigskip
+ \begin{center}
+  \includegraphics[width=0.4\columnwidth]{\images/o16zn_mods.eps}
+ \end{center}
+
+
+
+%\begin{columns}[T]
+%\column{.5\textwidth}
+
+%For a coulomb-dominated trajectory
+%\begin{eqnarray*}
+% R_g &=& a_0 + \sqrt{a_0^2 + (\ell_g+1/2)^2/k^2}  \\
+% &\simeq& (1.4-1.5) (A_p^{1/3} + A_t^{1/3}) 
+%\end{eqnarray*}
+%\begin{center}  
+%{\bf Coulomb weak (or absent)}
+%\end{center}
+
+%\begin{center}
+%    \includegraphics[width=0.85\columnwidth]{\images/grazing_traj.eps}
+%\end{center}
+
+%--------------------
+%\column{.5\textwidth}
+%\begin{center}
+%{\bf Coulomb strong} 
+%\end{center}
+
+%\begin{center}
+%    \includegraphics[width=0.85\columnwidth]{\images/grazing_traj_coul.eps}
+%\end{center}
+%\end{columns}
+
+
+%\begin{columns}[T]
+%\column{.5\textwidth}
+%\begin{center}
+%$\ell_g= \sqrt{\ell(\ell+1)} \approx (\ell+1/2) = k b %\approx k R_g$
+%\end{center}
+
+%\column{.5\textwidth}
+%\begin{center}  
+%$\ell_g= \sqrt{\ell(\ell+1)} \approx (\ell+1/2) = k R_g %\sqrt{1-\frac{2\eta}{k R_g}} $
+%$\ell_g= \sqrt{\ell(\ell+1)} \approx  k R_g %\sqrt{1-\frac{2\eta}{k R_g}} $
+%\end{center}
+
+%\end{columns}
+
+%\ei
+
+\end{frame}
+
+\begin{frame}[fragile]{Strong absorption: Classical interpretation}
+
+{\small
+
+\bi
+
+\item The grazing angular momentum $\ell_g$ is associated to a \textcolor{blue}{grazing distance} $R_g$, which is  its distance of closest approach $R_g = a_0 + \sqrt{a_0^2 + (\ell_g+1/2)^2/k^2}$.
+
+\item When Coulomb is weak (or absent):   $k R_g \approx (\ell_g+1/2)$
+
+\item The grazing distance $R_g \simeq (1.4-1.5) (A_p^{1/3} + A_t^{1/3})$  is approximately independent of the energy, so $\ell_g$ increases with energy.
+
+\item Angular momenta with $\ell < \ell_g$ are associated with trajectories which come inside $R_g$, and are strongly absorbed ($|S_\ell| \ll 1$).
+
+\ei
+}
+\begin{center}
+    \includegraphics[width=0.6\columnwidth]{\images/grazing_traj_coul.eps}
+\end{center}
+
+\end{frame}
+
+
+%------------------------------------------------------------
+\begin{frame}[fragile]{Near-side and far-side decomposition}
+
+ For $\ell \gg 1$ and  $\frac{1}{\ell +\frac{1}{2}} \lesssim \theta \lesssim  \pi -\frac{1}{\ell +\frac{1}{2}}$
+$$
+\small
+P_{\ell}(\cos\theta) \simeq  \frac{e^{i\left((\ell+\frac{1}{2})\theta -\frac{\pi}{4}\right)}-
+e^{-i\left((\ell+\frac{1}{2})\theta -\frac{\pi}{4}\right)}}
+{{\sqrt{2\pi\left(\ell+\frac{1}{2}\right)\cos\theta}}}
+\quad
+\Rightarrow
+\quad 
+f(\theta) = f^\mathrm{far}(\theta) + f^\mathrm{near}(\theta)
+$$
+
+\textcolor{blue}{Classically}, the contributions would correspond to  \textcolor{blue}{near-side} and \textcolor{blue}{far-side} trajectories:
+%Classical interpretation in terms of trajectories:
+\bi
+\footnotesize
+\item[\ding{233}] The repulsive Coulomb potential tends to deflect the trajectories outward from the target (\textcolor{blue}{near-side} trajectories). 
+\item[\ding{233}] Nuclear attraction tends to bend the trajectories inwards (\textcolor{blue}{far-side} trajectories).
+\item[\ding{233}] Near- and far-side trajectories may give rise to the same scattering angle so, if their amplitudes are similar, interference effects will occur. 
+%$\Rightarrow$ interference. 
+\ei
+
+\begin{center}
+ \includegraphics[width=0.55\columnwidth]{\images/classical-trajectories-satchler-3b.eps}
+\end{center}
+
+
+\begin{comment}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{center}
+    \includegraphics[width=0.85\columnwidth]{\images/classical-trajectories-satchler-3b.eps}
+\end{center}
+%--------------------
+\column{0.5\textwidth}
+\begin{center}
+    \includegraphics[width=0.80\columnwidth]{\images/he4pb_deflect_3b.eps}
+\end{center}
+\end{columns}
+\end{comment}
+
+
+\end{frame}
+
+
+
+\begin{comment}
+\begin{frame}[fragile]{Strong absorption and S-matrix}
+
+\bi
+\item Recall total scattering amplitude in presence of C and N interactions:
+$$
+\psframebox[fillcolor=magenta!0,linecolor=red,framearc=0.1,fillstyle=solid,framesep=2pt]{
+f(\theta) = f_C (\theta) + \frac{1}{2 i K} \sum_{\ell} (2 \ell +1) e^{2 i \sigma_\ell} (S_\ell -1) P_\ell(\cos \theta)
+}%psframe
+$$
+
+\item In strong absorption, $\ell < \ell_g$ are largely suppressed, hence $|S_\ell| \ll 1$
+
+\bi
+\item In the limit case $|S_\ell| =0 $ for $\ell < \ell_g$ and $|S_\ell| =1 $ for $\ell > \ell_g$ ({\bf black disk model}) 
+\item In actual situations, a smooth transition between $|S_\ell| \sim 0$ and $|S_\ell| = 1$ occurs
+\item As the energy increases, so does the number of partial waves involved
+\ei 
+
+\ei
+
+%\column{0.5\textwidth}
+\begin{center}
+    \includegraphics[width=0.45\columnwidth]{\images/smod_fresnel.eps}
+\end{center}
+
+\end{frame}
+
+\end{comment}
+
+\subsection{Patterns of elastic scattering:} 
+% -------------------------------------------------------------------------
+\slide{Patterns of elastic scattering: Energy  dependence}
+%------------------------------------------------------------------------
+\bi
+\setlength{\itemsep}{16pt}
+%\item  Depending on the bombarding energy $E$ and the charges and masses of the interacting nuclei, we observe different patterns  of elastic scattering.  
+ 
+ \item The semi-classical vs quantum character of the scattering can be given in terms of the  Sommerfeld parameter: 
+{\blue $\eta = {Z_p Z_t  e^2 \over  4 \pi \epsilon_0 \hbar v}$ }
+
+\item The Coulomb vs nuclear relevance, in terms of the  energy of the Coulomb barrier:
+{\blue $V_b \simeq {Z_p Z_t   \over  A_p^{1/3}+A_t^{1/3}}$ [MeV] }
+
+\item Three distinct patterns appear for the elastic cross sections
+
+%\vspace{0.5cm}
+\begin{itemize}
+%\setlength{\itemsep}{16pt}
+\gitem{ Nuclear relevant $E>V_b$, quantum $\eta \lesssim 1$} $\Rightarrow$ Fraunhofer scattering
+\gitem{Nuclear relevant $E > V_b$,  semiclassical $\eta \gg 1$} $\Rightarrow$ Fresnel scattering
+\gitem{Coulomb-dominated $E < V_b $} $\Rightarrow$ Rutherford scattering 
+\end{itemize}
+\ei
+
+
+\end{frame}
+
+
+
+
+% ----------------------------------------------------------------------------------
+\slide{Patterns of elastic scattering: $^{4}$He+$^{58}$Ni example}
+
+
+% --------------- Absolute cross sections --------
+\begin{minipage}[t]{.32\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e5_abs.eps}} \par}
+\end{figure}
+%\center{Rutherford  scattering}
+\end{minipage}
+% -----------------------------------------------
+\begin{minipage}[t]{.32\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e10_abs.eps}} \par}
+\end{figure}
+%\center{Fresnel}
+\end{minipage}
+% -----------------------------------------------
+\begin{minipage}[t]{.32\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e25_abs.eps}} \par}
+\end{figure}
+%\center{Fraunh\"ofer}
+\end{minipage}
+% -----------------------------------------------
+
+\vspace{0.5cm}
+
+% --------------- Relative cross sections ---------------------
+\begin{minipage}[t]{.32\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e5.eps}} \par}
+\end{figure}
+\center{\bf Rutherford  scattering }
+\end{minipage}
+% -----------------------------------------------
+\begin{minipage}[t]{.32\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e10.eps}} \par}
+\end{figure}
+\center{\bf Fresnel Scattering}
+\end{minipage}
+% -----------------------------------------------
+\begin{minipage}[t]{.32\textwidth}
+\begin{figure}{\par \resizebox*{0.75\textwidth}{!}
+{\includegraphics{\images/he4ni_e25.eps}} \par}
+\end{figure}
+\center{\bf Fraunh\"ofer Scattering}
+\end{minipage}
+% -----------------------------------------------
+
+\end{frame}
+% --------------------------------------------------------------------------------------
+
+\subsubsection{Rutherford scattering}
+% -------------------------------------------------------------------------
+\slide{Rutherford scattering}
+
+%{\sc \brick Rutherford scattering}
+
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{figure}{\par \resizebox*{0.7\textwidth}{!}
+{\includegraphics{\images/rutherford.eps}} \par}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}{\par \resizebox*{0.65\textwidth}{!}
+{\includegraphics{\images/he4ni_e5_abs.eps}} \par}
+\end{figure}
+\end{columns}
+
+{\small 
+\begin{itemize}
+ \item Centre of mass energy  below the Coulomb barrier({\verde $E < V_b$}):  Nuclear potential does not affect the scattering.
+ \item Analytical  differential cross sections (same for classical and quantum!) 
+ $${d \sigma \over d \Omega} = \left(\kappa {Z_p Z_t  e^2 \over 2 E}\right)^2 {1 \over \sin^4 (\theta/2)}$$
+%\item Application as an analytical technique to find the target composition: Rutherford back-scattering.
+\end{itemize} 
+}
+\end{frame}
+
+
+
+%
+
+\subsubsection{Fresnel Scattering}
+% ----------------------------------------------------------------------------------
+
+
+% ----------------------------------------------------------------------------------
+\begin{frame}[fragile]{Fresnel scattering}
+
+{\small
+
+\bi
+\item Analogous to light scattering from an object with size $R_g \gg \lambda$. Leads to $\eta \gg 1$.
+%\item Grazing angular momentum (\textcolor{blue}{$\ell_g$})  
+\item The grazing angular momentum (\textcolor{blue}{$\ell_g$})  determines a grazing angle (\textcolor{blue}{$\theta_g$}), such that  $\ell_g = \eta \cot(\theta_g/2) $, and a  grazing distance $R_{\rm g}=
+\frac{a_0}{2} \left( 1+\sin(\theta_g/2)^{-1} \right)$. 
+
+\item Quarter-point recipe: $|S(\ell_g)| = 1/2$ implies $\sigma/\sigma_R(\theta_g) =1/4$.
+
+%\item  $R_g$ is approximately energy independent. So, as $E$ increases, $a_0$ gets smaller, and $\theta_g$ gets smaller.
+\item Angular pattern divided in {\it illuminated} ($\theta<\theta_g$) and {\it shadow} ($\theta>\theta_g$) regions. Interference between pure Coulomb and near-side trajectories produce oscillations.
+
+
+\begin{columns}
+\column{0.45\textwidth}
+\begin{center}
+    \includegraphics[width=0.75\columnwidth]{\images/fresnel.eps}
+\end{center}
+%--------------------
+\column{0.55\textwidth}
+\begin{center}
+    \includegraphics[width=0.75\columnwidth]{\images/o16pb_e170_fresnel.eps}
+\end{center}
+
+\end{columns}
+
+
+%\item {If $R_{gr}$ is the  distance of maximum approach for for a Coulomb trajectory, it will have associated a scattering angle $\theta_{gr}$ such that
+
+
+%For each {\color{green} projectile-target system} there is a distance, $R_ {int}$ or {\color{green} $R_{gr}$}, almost independent of the energy, which separates the domain of the elastic elastic from the one of nuclear reactions.
+
+%\item \hlg{If $R_{gr}$ is the  distance of maximun approach for for a Coulomb trajectory, it will have associated a scattering angle $\theta_{gr}$ such that
+
+
+
+%\item \hlg{For a given system, $R_{\rm gr}$ fixes, if $E$ increases 
+%$\sin(\theta_{\rm gr}/2)$ decreases. Therefore $\theta_{\rm gr}$ decreases.}
+\end{itemize}
+}
+
+\end{frame}
+
+
+
+
+
+% ----------------------------------------------------------------------------------
+
+
+\subsubsection{Fraunhoffer Scattering}
+
+% ----------------------------------------------------------------------------------
+\begin{frame}[fragile]{Fraunhofer scattering}
+
+{\small 
+
+\bi
+
+\item Analogous to the scattering of light by an object which has a size $R_g \simeq \lambda$
+
+\item Waves scattering from the the two sides  interfere constructively or destructively, giving rise to a diffraction pattern of maxima and minima spaced by 
+$
+\psframebox[fillcolor=magenta!0,linecolor=red,framearc=0.1,fillstyle=solid,framesep=1pt]{
+\Delta \theta= \pi /\ell_g \approx \pi/ k R_g
+}
+$
+\item Since $\Delta \theta \sim 1/\sqrt{E}$, as energy increases, oscillating pattern compresses and more oscillations appear.
+\ei
+
+}
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{center}
+    \includegraphics[width=0.85\columnwidth]{\images/fraunhofer.eps}
+\end{center}
+%--------------------
+\column{0.5\textwidth}
+\begin{center}
+ %   {\scriptsize $\eta \approx 2.4; ~~~\ell_g \approx 32$} \\
+    \includegraphics[width=0.55\columnwidth]{\images/fraunhofer_example.eps}
+\end{center}
+\end{columns}
+
+
+
+\end{frame}
+
+%----------------------------------------------------------------------------
+
+
+
+
+\subsection{Elastic scattering of weakly-bound nuclei}
+% ---------------------------------------------------------------------------------------------------
+\subsubsection{Halo nuclei}
+
+\slide{Elastic scattering of halo nuclei}
+
+{\verde How does the halo structure affect the elastic scattering?}
+\vspace{0.3cm}
+
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{figure}{\par \resizebox*{0.7\textwidth}{!}
+{\includegraphics{\images/he4pb_e22.eps}} \par}
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}{\par \resizebox*{0.7\textwidth}{!}
+{\includegraphics{\images/he6pb_e22.eps}} \par}
+\end{figure}
+\end{columns}
+\bigskip
+
+\begin{small}
+\begin{itemize}
+\item \nuc{4}{He}+\nuc{208}{Pb} shows typical Fresnel pattern and ``standard'' optical model parameters
+%$\rightarrow$ {\blue \em strong absorption} 
+\item \nuc{6}{He}+\nuc{208}{Pb} shows a prominent reduction in the elastic cross section, suggesting that part of the incident flux goes to non-elastic channels (e.g.~breakup, neutron transfer) 
+%\item[] Understanding and disentangling these non-elastic channels requires going beyond the optical model (eg.~{\blue coupled-channels method} $\Rightarrow$ next lectures) 
+\end{itemize}
+\end{small}
+%}%onslide
+\end{frame}
+
+
+
+
+
+
+\end{document}
