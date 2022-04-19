@@ -1,0 +1,86 @@
+{
+	"reaction": {
+		"process":"stripping",
+		"projectile": { "z":1, "a":2, "r0":1.22, "spin":2 },
+		"target": { "z":82, "a":208, "r0":1.16, "spin":0 },
+		"ejectile": { "z":1, "a":1, "r0":1.22, "spin":1, "exc_energy":0 },
+		"target_like": { "z":82, "a":209, "r0":1.16, "spin":9, "exc_energy":0 },
+		"particle": { "z":0, "a":1, "spin":1 },
+		"energy":{ 
+			"in": { "e_lab":12.3, "e_cm":12.183, "e_ea":6.15 },
+			"out": { "e_lab":13.962, "e_cm":13.896, "e_ea":13.962 },
+			"q_gg":1.713
+		}
+	},
+	"integration_parameters": {
+		"theta_min":0, "d_theta":1, "n_theta":180, "l_max":20, "r_max":30, "dr":0.05, "sfactors":0.145,  "post_prior":"post"
+	},
+	"entrance_channel": {
+		"optical_model_potential": {
+			"type":"volume",
+			"volume": { "v":-114, "r":1.063, "a":0.997 },
+			"surface": { "v":0, "r":1.15, "a":0.794 },
+			"superposition": {
+				"volume": { "v":-95.801, "r":1.15, "a":0.794 },
+				"surface": { "v":0, "r":1.15, "a":0.794 }
+			},
+			"proximity": { "b":1.1 },
+			"r0_c":1.3
+		},
+		"absorptive_potential": {
+			"type":"surface",
+			"volume": { "v":-40.24, "r":1.533, "a":0.884 },
+			"surface": { "v":-8.35, "r":1.501, "a":0.728 },
+			"superposition": {
+				"volume": { "v":-2.348, "r":1.321, "a":0.263 },
+				"surface": { "v":-10.218, "r":1.359, "a":0.898 }
+			}
+		},
+		"spin_orbit": {
+			"v":5.42, "w":0.853, "r":0.843, "a":0.60
+		},
+		"bound_state": {
+			"j":1, "l":0, "s":1, "nr":1, "e":-2.225,
+			"potential": {
+				"type":"gaussian",
+				"volume": { "v":-63.31, "r":1.25, "a":0.65 },
+				"gaussian": { "v":-55.39, "r":1.75 },
+				"r0_c":1.25
+			}
+		}
+	},
+	"exit_channel": {
+		"optical_model_potential": {
+			"type":"volume",
+			"volume": { "v":-58.92, "r":1.23, "a":0.72 },
+			"surface": { "v":0, "r":1.235, "a":0.647 },
+			"superposition": {
+				"volume": { "v":-54, "r":1.235, "a":0.647 },
+				"surface": { "v":0, "r":1.235, "a":0.647 }
+			},
+			"proximity": { "b":1.1 },
+			"r0_c":1.25
+		},
+		"absorptive_potential": {
+			"type":"surface",
+			"volume": { "v":-8.84, "r":1.973, "a":0.5 },
+			"surface": { "v":-11.39, "r":1.30, "a":0.44 },
+			"superposition": {
+				"volume": { "v":-1.2, "r":1.235, "a":0.647 },
+				"surface": { "v":-10.227, "r":1.248, "a":0.627 }
+			}
+		},
+		"spin_orbit": {
+			"v":5.7, "w":0, "r":0.95, "a":0.95
+		},
+		"bound_state": {
+			"j":9, "l":4, "s":1, "nr":2, "e":-3.937,
+			"potential": {
+				"type":"volume",
+				"volume": { "v":-48.16, "r":1.25, "a":0.65 },
+				"gaussian": { "v":-60, "r":1.15 },
+				"r0_c":1.25
+			}
+		}
+	}
+}

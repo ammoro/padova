@@ -1,0 +1,30 @@
+1 2 82 208 0 1 			/ Z1 A1 Z2 A2 Ztr Atr
+stripping 			/ pickup-stripping
+0.000000 			/ excitation energy
+9/2  			/ state description
+20.000000 			/ collision energy
+lab 			/ energy sys: lab or cm
+cm 			/ angle sys: lab or cm
+mb 			/ cross section units (b,mb,mcb,nb)
+20 			/ Number of the points
+*angle (deg)* *cross-section*  *error (%)*
+17.204  2.6944 0
+24.731  4.2573 0
+33.333  4.1295 0
+39.785  2.9079  0
+48.387  2.9526 0
+55.376  2.5350  0
+62.366  1.4641 0
+70.968  1.2959 0
+77.957  1.0310 0
+85.484  0.82018  0
+88.710  0.47369  0
+97.849  0.41295  0
+105.38  0.41929  0
+111.83  0.29079 0
+119.35  0.22099 0
+125.81  0.18404 0
+133.87  0.15326 0
+141.40  0.11647 0
+150.00  0.095528  0
+164.52  0.12008 0
